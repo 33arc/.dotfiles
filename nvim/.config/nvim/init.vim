@@ -38,7 +38,6 @@ set splitbelow           " create horizontal splits below
 set switchbuf=usetab     " when switching buffers, include tabs
 set tabpagemax=30        " show up to 30 tabs
 
-set cryptmethod=blowfish " use blowfish encryption for encrytped files
 let g:netrw_mouse_maps=0 " Ignore mouse clicks when browsing directories
 
 set number
@@ -174,19 +173,23 @@ if exists(":EasyAlign")
 	xmap g<tab> <Plug>(EasyAlign)
 endif
 
+" Automatically format Go files with gofmt -w when writing and quitting
+autocmd BufWritePost *.go silent! !gofmt -w %
+autocmd VimLeave *.go silent! !gofmt -w %
 
 "_________________________________________________________________________
 " COLORS
 "
-if &t_Co > 2 || has("gui_running")
-	try
-		colorscheme summerfruit256 " might not be on every system
-	catch /^Vim\%((\a\+)\)\=:E185/
-		colorscheme slate          " backup, in case summerfruit was not available
-	endtry
-
-    syntax on
-endif
+"
+" if &t_Co > 2 || has("gui_running")
+" 	try
+" 		colorscheme summerfruit256 " might not be on every system
+" 	catch /^Vim\%((\a\+)\)\=:E185/
+" 		colorscheme slate          " backup, in case summerfruit was not available
+" 	endtry
+" 
+"     syntax on
+" endif
 
 
 "_________________________________________________________________________

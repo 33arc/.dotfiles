@@ -177,6 +177,9 @@ endif
 autocmd BufWritePost *.go silent! !gofmt -w %
 autocmd VimLeave *.go silent! !gofmt -w %
 
+" 
+command! gleak :!gitleaks detect --source . -v
+
 "_________________________________________________________________________
 " COLORS
 "

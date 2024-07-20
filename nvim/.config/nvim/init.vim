@@ -220,3 +220,47 @@ if ! isdirectory(&backupdir)
 	call mkdir(&backupdir, "", 0700)
 endif
 set backup
+
+"_________________________________________________________________________
+
+call plug#begin()
+
+" List your plugins here
+Plug 'tpope/vim-sensible'
+Plug 'hashivim/vim-terraform'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'othree/eregex.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'preservim/vim-indent-guides'
+Plug 'junegunn/vim-easy-align'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'wellle/context.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+
+call plug#end()
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" set t_Co=256   " This is may or may not needed.
+" set background=light
+colorscheme vim
+filetype plugin indent on
+
+let g:indent_guides_enable_on_vim_startup = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey
+
+hi String guifg=#F01818
+hi Constant guifg=#FF00FF
+hi CursorLine guibg=#1F1F1F guifg=NONE
+hi Comment guifg=#0000FF
